@@ -48,8 +48,8 @@ class _ExamPageState extends State<ExamPage> {
           child: Icon(Icons.thumb_down, color: Colors.red),
         ),
       );
-      appBrain.nextQuestion();
     }
+    appBrain.nextQuestion();
   }
 
   @override
