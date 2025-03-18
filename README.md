@@ -1,16 +1,13 @@
 # quiz_game
 
-A new Flutter project.
+### Image 1
 
-## Getting Started
+![Image1 du projet](images/image1.png)
 
-This project is a starting point for a Flutter application.
+### Image 2
 
-A few resources to get you started if this is your first Flutter project:
+![Image2 du projet](images/image2.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Image 3
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Image2 du projet](images/image3.png)
