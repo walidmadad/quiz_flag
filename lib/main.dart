@@ -33,10 +33,8 @@ class ExamPage extends StatefulWidget {
 class _ExamPageState extends State<ExamPage> {
   List<Widget> answerResult = [];
 
-  int questionNumber = 0;
-
   void checkAnswer(bool pick) {
-    if (appBrain.questions[questionNumber].answer == pick) {
+    if (appBrain.questions[appBrain.questionNumber].answer == pick) {
       answerResult.add(
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -50,6 +48,7 @@ class _ExamPageState extends State<ExamPage> {
           child: Icon(Icons.thumb_down, color: Colors.red),
         ),
       );
+      appBrain.nextQuestion();
     }
   }
 
@@ -66,7 +65,7 @@ class _ExamPageState extends State<ExamPage> {
             children: [
               Image(
                 image: AssetImage(
-                  'images/${appBrain.questions[questionNumber].questionImage}.png',
+                  'images/${appBrain.questions[appBrain.questionNumber].questionImage}.png',
                 ),
                 width: 300,
                 height: 200,
@@ -75,7 +74,7 @@ class _ExamPageState extends State<ExamPage> {
 
               SizedBox(height: 10),
               Text(
-                "This country is ${appBrain.questions[questionNumber].questionText}?",
+                "This country is ${appBrain.questions[appBrain.questionNumber].questionText}?",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
@@ -90,7 +89,6 @@ class _ExamPageState extends State<ExamPage> {
               onPressed: () {
                 setState(() {
                   checkAnswer(true);
-                  questionNumber++;
                 });
               },
               color: Colors.green,
@@ -108,7 +106,6 @@ class _ExamPageState extends State<ExamPage> {
               onPressed: () {
                 setState(() {
                   checkAnswer(false);
-                  questionNumber++;
                 });
               },
               color: Colors.red,
