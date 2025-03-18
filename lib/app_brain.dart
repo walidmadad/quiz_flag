@@ -1,5 +1,8 @@
 import 'Question.dart';
 class AppBrain {
+
+  int _questionNumber = 0;
+
   final List<Question> _questions = [
     Question("Argentine", "ar", true),
     Question("France", "be", false),
@@ -13,4 +16,13 @@ class AppBrain {
   ];
 
   List<Question> get questions => _questions;
+
+  int get questionNumber => _questionNumber;
+  void nextQuestion(){
+    if(_questionNumber < _questions.length -1){
+      _questionNumber++;
+    }else{
+      _questionNumber = 0;
+    }
+  }
 }
