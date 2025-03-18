@@ -46,6 +46,24 @@ class _ExamPageState extends State<ExamPage> {
     Question("Sri Lanka", "lk", true),
   ];
 
+  void checkAnswer(bool pick) {
+    if (questions[questionNumber].answer == pick) {
+      answerResult.add(
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.thumb_up, color: Colors.green),
+        ),
+      );
+    } else {
+      answerResult.add(
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.thumb_down, color: Colors.red),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -82,26 +100,15 @@ class _ExamPageState extends State<ExamPage> {
             child: MaterialButton(
               onPressed: () {
                 setState(() {
-                  if (questions[questionNumber].answer == true) {
-                    answerResult.add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.thumb_up, color: Colors.green),
-                      ),
-                    );
-                  } else {
-                    answerResult.add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.thumb_down, color: Colors.red),
-                      ),
-                    );
-                  }
+                  checkAnswer(true);
                   questionNumber++;
                 });
               },
-              color: Colors.grey,
-              child: Text("True"),
+              color: Colors.green,
+              child: Text(
+                "True",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
             ),
           ),
         ),
@@ -111,26 +118,15 @@ class _ExamPageState extends State<ExamPage> {
             child: MaterialButton(
               onPressed: () {
                 setState(() {
-                  if (questions[questionNumber].answer == false) {
-                    answerResult.add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.thumb_up, color: Colors.green),
-                      ),
-                    );
-                  } else {
-                    answerResult.add(
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(Icons.thumb_down, color: Colors.red),
-                      ),
-                    );
-                  }
+                  checkAnswer(false);
                   questionNumber++;
                 });
               },
-              color: Colors.grey,
-              child: Text("False"),
+              color: Colors.red,
+              child: Text(
+                "False",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
             ),
           ),
         ),
