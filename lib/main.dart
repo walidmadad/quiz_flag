@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:quiz_game/Question.dart';
 import 'app_brain.dart';
 
 AppBrain appBrain = AppBrain();
