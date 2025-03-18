@@ -29,11 +29,13 @@ class ExamPage extends StatefulWidget {
 }
 
 class _ExamPageState extends State<ExamPage> {
+  List<Widget> answerResult = [];
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Row(children: answerResult),
         Expanded(
           flex: 6,
           child: Column(
@@ -60,7 +62,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  answerResult.add(
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.thumb_up, color: Colors.green),
+                    ),
+                  );
+                });
+              },
               color: Colors.grey,
               child: Text("Argentine"),
             ),
@@ -70,7 +81,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  answerResult.add(
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.thumb_down, color: Colors.red),
+                    ),
+                  );
+                });
+              },
               color: Colors.grey,
               child: Text("Italy"),
             ),
@@ -80,7 +100,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  answerResult.add(
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.thumb_down, color: Colors.red),
+                    ),
+                  );
+                });
+              },
               color: Colors.grey,
               child: Text("Brazil"),
             ),
@@ -90,7 +119,16 @@ class _ExamPageState extends State<ExamPage> {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
             child: MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  answerResult.add(
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.thumb_down, color: Colors.red),
+                    ),
+                  );
+                });
+              },
               color: Colors.grey,
               child: Text("Urugway"),
             ),
