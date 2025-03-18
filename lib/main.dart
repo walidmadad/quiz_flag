@@ -33,9 +33,11 @@ class ExamPage extends StatefulWidget {
 
 class _ExamPageState extends State<ExamPage> {
   List<Widget> answerResult = [];
+  int rightAnswers = 0;
 
   void checkAnswer(bool pick) {
     if (appBrain.questions[appBrain.questionNumber].answer == pick) {
+      rightAnswers++;
       answerResult.add(
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -54,7 +56,8 @@ class _ExamPageState extends State<ExamPage> {
       Alert(
         context: context,
         title: "Quiz is done",
-        desc: "you have finished the quiz",
+        desc:
+            "you have finished the quiz\nYour Score : $rightAnswers/${answerResult.length}",
         buttons: [
           DialogButton(
             child: Text(
@@ -69,6 +72,7 @@ class _ExamPageState extends State<ExamPage> {
       ).show();
       appBrain.reset();
       answerResult = [];
+      rightAnswers = 0;
     } else {
       appBrain.nextQuestion();
     }
