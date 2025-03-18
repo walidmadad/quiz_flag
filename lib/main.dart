@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:quiz_game/Question.dart';
+import 'app_brain.dart';
 
+AppBrain appBrain = AppBrain();
 void main() {
   runApp(MyApp());
 }
@@ -34,20 +36,8 @@ class _ExamPageState extends State<ExamPage> {
 
   int questionNumber = 0;
 
-  List<Question> questions = [
-    Question("Argentine", "ar", true),
-    Question("France", "be", false),
-    Question("Germany", "cm", false),
-    Question("Egypt", "eg", true),
-    Question("Ghana", "gh", true),
-    Question("Hong kong", "hk", true),
-    Question("Italy", "in", false),
-    Question("Vietnam", "ma", false),
-    Question("Sri Lanka", "lk", true),
-  ];
-
   void checkAnswer(bool pick) {
-    if (questions[questionNumber].answer == pick) {
+    if (appBrain.questions[questionNumber].answer == pick) {
       answerResult.add(
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -77,7 +67,7 @@ class _ExamPageState extends State<ExamPage> {
             children: [
               Image(
                 image: AssetImage(
-                  'images/${questions[questionNumber].questionImage}.png',
+                  'images/${appBrain.questions[questionNumber].questionImage}.png',
                 ),
                 width: 300,
                 height: 200,
@@ -86,7 +76,7 @@ class _ExamPageState extends State<ExamPage> {
 
               SizedBox(height: 10),
               Text(
-                "This country is ${questions[questionNumber].questionText}?",
+                "This country is ${appBrain.questions[questionNumber].questionText}?",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
