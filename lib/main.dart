@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'app_brain.dart';
 
 AppBrain appBrain = AppBrain();
@@ -49,7 +50,28 @@ class _ExamPageState extends State<ExamPage> {
         ),
       );
     }
-    appBrain.nextQuestion();
+    if (appBrain.isFinished()) {
+      Alert(
+        context: context,
+        title: "Quiz is done",
+        desc: "you have finished the quiz",
+        buttons: [
+          DialogButton(
+            child: Text(
+              "Start",
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            color: Colors.blue,
+            onPressed: () => Navigator.pop(context),
+            width: 120,
+          ),
+        ],
+      ).show();
+      appBrain.reset();
+      answerResult = [];
+    } else {
+      appBrain.nextQuestion();
+    }
   }
 
   @override
