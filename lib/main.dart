@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:quiz_game/Question.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,41 +32,19 @@ class ExamPage extends StatefulWidget {
 class _ExamPageState extends State<ExamPage> {
   List<Widget> answerResult = [];
 
-  List<String> questions = [
-    "Argentine",
-    "France",
-    "germany",
-    "Egypt",
-    "Ghana",
-    "Hong Kong",
-    "Italy",
-    "Vitenam",
-    "Sri Lanka",
-  ];
-  List<bool> correctAnswer = [
-    true,
-    false,
-    false,
-    true,
-    true,
-    true,
-    false,
-    false,
-    true,
-  ];
-
-  List<String> questionImage = [
-    "ar",
-    "be",
-    "cm",
-    "eg",
-    "gh",
-    "hk",
-    "in",
-    "ma",
-    "lk",
-  ];
   int questionNumber = 0;
+
+  List<Question> questions = [
+    Question("Argentine", "ar", true),
+    Question("France", "be", false),
+    Question("Germany", "cm", false),
+    Question("Egypt", "eg", true),
+    Question("Ghana", "gh", true),
+    Question("Hong kong", "hk", true),
+    Question("Italy", "in", false),
+    Question("Vietnam", "ma", false),
+    Question("Sri Lanka", "lk", true),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +59,7 @@ class _ExamPageState extends State<ExamPage> {
             children: [
               Image(
                 image: AssetImage(
-                  'images/${questionImage[questionNumber]}.png',
+                  'images/${questions[questionNumber].questionImage}.png',
                 ),
                 width: 300,
                 height: 200,
@@ -89,7 +68,7 @@ class _ExamPageState extends State<ExamPage> {
 
               SizedBox(height: 10),
               Text(
-                "This country is ${questions[questionNumber]}?",
+                "This country is ${questions[questionNumber].questionText}?",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
@@ -103,7 +82,7 @@ class _ExamPageState extends State<ExamPage> {
             child: MaterialButton(
               onPressed: () {
                 setState(() {
-                  if (correctAnswer[questionNumber] == true) {
+                  if (questions[questionNumber].answer == true) {
                     answerResult.add(
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -132,7 +111,7 @@ class _ExamPageState extends State<ExamPage> {
             child: MaterialButton(
               onPressed: () {
                 setState(() {
-                  if (correctAnswer[questionNumber] == false) {
+                  if (questions[questionNumber].answer == false) {
                     answerResult.add(
                       Padding(
                         padding: const EdgeInsets.all(8.0),
