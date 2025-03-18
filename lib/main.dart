@@ -30,6 +30,43 @@ class ExamPage extends StatefulWidget {
 
 class _ExamPageState extends State<ExamPage> {
   List<Widget> answerResult = [];
+
+  List<String> questions = [
+    "Argentine",
+    "France",
+    "germany",
+    "Egypt",
+    "Ghana",
+    "Hong Kong",
+    "Italy",
+    "Vitenam",
+    "Sri Lanka",
+  ];
+  List<bool> correctAnswer = [
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+  ];
+
+  List<String> questionImage = [
+    "ar",
+    "be",
+    "cm",
+    "eg",
+    "gh",
+    "hk",
+    "in",
+    "ma",
+    "lk",
+  ];
+  int questionNumber = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,7 +79,9 @@ class _ExamPageState extends State<ExamPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image(
-                image: const AssetImage("images/ar.png"),
+                image: AssetImage(
+                  'images/${questionImage[questionNumber]}.png',
+                ),
                 width: 300,
                 height: 200,
                 fit: BoxFit.cover,
@@ -50,7 +89,7 @@ class _ExamPageState extends State<ExamPage> {
 
               SizedBox(height: 10),
               Text(
-                "Who is the country ?",
+                "This country is ${questions[questionNumber]}?",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
@@ -64,16 +103,26 @@ class _ExamPageState extends State<ExamPage> {
             child: MaterialButton(
               onPressed: () {
                 setState(() {
-                  answerResult.add(
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.thumb_up, color: Colors.green),
-                    ),
-                  );
+                  if (correctAnswer[questionNumber] == true) {
+                    answerResult.add(
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.thumb_up, color: Colors.green),
+                      ),
+                    );
+                  } else {
+                    answerResult.add(
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.thumb_down, color: Colors.red),
+                      ),
+                    );
+                  }
+                  questionNumber++;
                 });
               },
               color: Colors.grey,
-              child: Text("Argentine"),
+              child: Text("True"),
             ),
           ),
         ),
@@ -83,54 +132,26 @@ class _ExamPageState extends State<ExamPage> {
             child: MaterialButton(
               onPressed: () {
                 setState(() {
-                  answerResult.add(
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.thumb_down, color: Colors.red),
-                    ),
-                  );
+                  if (correctAnswer[questionNumber] == false) {
+                    answerResult.add(
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.thumb_up, color: Colors.green),
+                      ),
+                    );
+                  } else {
+                    answerResult.add(
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(Icons.thumb_down, color: Colors.red),
+                      ),
+                    );
+                  }
+                  questionNumber++;
                 });
               },
               color: Colors.grey,
-              child: Text("Italy"),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: MaterialButton(
-              onPressed: () {
-                setState(() {
-                  answerResult.add(
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.thumb_down, color: Colors.red),
-                    ),
-                  );
-                });
-              },
-              color: Colors.grey,
-              child: Text("Brazil"),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: MaterialButton(
-              onPressed: () {
-                setState(() {
-                  answerResult.add(
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(Icons.thumb_down, color: Colors.red),
-                    ),
-                  );
-                });
-              },
-              color: Colors.grey,
-              child: Text("Urugway"),
+              child: Text("False"),
             ),
           ),
         ),
