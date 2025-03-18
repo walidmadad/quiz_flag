@@ -1,6 +1,6 @@
 import 'Question.dart';
 class AppBrain {
-  List<Question> questions = [
+  final List<Question> _questions = [
     Question("Argentine", "ar", true),
     Question("France", "be", false),
     Question("Germany", "cm", false),
@@ -11,4 +11,6 @@ class AppBrain {
     Question("Vietnam", "ma", false),
     Question("Sri Lanka", "lk", true),
   ];
+
+  List<Question> get questions => _questions;
 }
